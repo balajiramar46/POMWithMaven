@@ -219,6 +219,27 @@ public class SeMethods extends Reporter implements WdMethods{
 		} 
 		return bReturn;
 	}
+	
+	public boolean verifyCurrentURL(String title) {
+		boolean bReturn =false;
+		try {
+			if(driver.getCurrentUrl().equals(title)) {
+				reportStep("The title of the page matches with the value :"+title,"PASS");
+				bReturn= true;
+			}else {
+				reportStep("The title of the page:"+driver.getTitle()+" did not match with the value :"+title, "FAIL");
+			}
+		} catch (WebDriverException e) {
+			reportStep("Unknown exception occured while verifying the title", "FAIL");
+		} 
+		return bReturn;
+	}
+	
+	
+	
+	
+	
+	
 
 	public void verifyExactText(WebElement ele, String expectedText) {
 		try {
