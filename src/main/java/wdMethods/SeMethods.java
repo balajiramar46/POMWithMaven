@@ -194,6 +194,15 @@ public class SeMethods extends Reporter implements WdMethods{
 		}
 
 	}
+	public void selectDropDownUsingValue(WebElement ele, String value) {
+		try {
+			new Select(ele).selectByValue(value);
+			reportStep("The dropdown is selected with text "+value,"PASS");
+		} catch (WebDriverException e) {
+			reportStep("The element: "+ele+" could not be found.", "FAIL");
+		}
+
+	}
 
 	public void selectDropDownUsingIndex(WebElement ele, int index) {
 		try {
